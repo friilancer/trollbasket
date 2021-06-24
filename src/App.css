@@ -1,0 +1,96 @@
+body{
+	padding: 0;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.group-icon span{
+	padding: 2px 5px;
+	position: relative;
+	bottom: 9px;
+	right: 5px;
+}
+
+.link{
+	text-decoration: none;
+}
+
+.text-blue-400{
+	color: rgb(34, 125, 255);
+}
+
+.bg-blue-400{
+	background-color: rgb(34, 125, 255);
+}
+
+.font-semibold{
+	font-weight: 500;
+}
+
+.font-bold{
+	font-weight: bold;
+}
+
+.text-grey{
+	color: rgba(0, 0, 0, 0.7);
+}
+
+.bg-grey-50{
+	background-color: #f3f3f3;
+}
+
+.bg-grey-100{
+	background-color: #e3e3e3;
+}
+
+.bg-orange-500{
+	background: rgb(237, 111, 56)
+}
+
+.bg-blue-400{
+	background: rgb(38, 123, 253);
+}
+
+.bg-purple-400{
+	background: rgb(124, 66, 240);
+}
+
+.bg-green-400{
+	background: rgb(7, 145, 78);
+}
+
+.border-rounded-full{
+	border-radius: 100%;
+}
+
+.border-rounded{
+	border-radius: 6px;
+}
+
+.p-rect-y-circular{
+	padding: 4px 6px;
+}
+
+.p-2{
+	padding: 2px;
+}
+
+.p-4{
+	padding: 5px;
+}
+
+.p-rect-x-circular{
+	padding: 6px 3px;
+}
+
+.font-small {
+	font-size: 10px;
+}
+
+.font-medium {
+	font-size: 14px;
+}
+
+.text-white{
+	color: #fff;
+}
