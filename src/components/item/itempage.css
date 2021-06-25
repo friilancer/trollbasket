@@ -7,7 +7,7 @@
 }
 
 .itempage-nav .fa-chevron-left{
-	margin-left: 15px;
+	margin: 0 0 0 15px;
 	border-radius: 2px;
 }
 
@@ -36,7 +36,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 10px 0px;
 }
 
 div.itempage-body-productDescription{
@@ -55,11 +54,63 @@ div.itempage-body-productDescription{
 	align-items: center;
 }
 
-.product-stars{
+.product-stars, .productReviews-userComment{
 	display: flex;
 	align-items: center;
 }
 
+.productReviews-userComment{
+	column-gap: 8px;
+	padding-bottom: 10px;
+}
+
+.productReviews-userComment img{
+	width: 28px;
+}
+
+.itempage-body-reviewsContainer{
+	border-bottom: 10px solid #e3e3e3;
+}
+
+.item-actions{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 10px;
+}
+
+.item-actions button{
+	margin: 15px 0;
+	width: 42vw;
+	max-width: 140px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.item-actions button.addToCart{
+	border: none;
+	padding: 17px 30px;
+}
+
+.item-actions button.addToWishlist{
+	border: 2px solid rgba(0, 0, 0, 0.7);
+	padding: 15px 28px;
+	background: #fff;
+}
+
+button.addToCart:hover{
+	background: #fff;
+	border: 2px solid rgb(34, 125, 255);
+	color: rgb(34, 125, 255);
+	padding: 15px 28px;
+}
+
+button.addToWishlist:hover{
+	background: rgba(0, 0, 0, 0.7);
+	border: none;
+	color: #fff ;
+	padding: 17px 30px;
+}
 
 
 @media screen and (min-width: 600px){
@@ -83,4 +134,7 @@ div.itempage-body-productDescription{
 	div.itempage-body-productDescription{
 		padding: 10px 8px;
 	}
+	.productReviews-userComment img{
+		width: 38px;
+	}	
 }

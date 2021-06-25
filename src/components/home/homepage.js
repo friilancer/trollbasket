@@ -2,14 +2,9 @@ import './homepage.css';
 import {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import products from '../../data/mockData';
+import ItemTab from '../item/itemtab'
 
 const HomePage = () => {
-	const {
-		image,
-		name,
-		price,
-		stock
-	} = products[0]
 	return(
 		<>
 		 	<h3 className="homepage-h3">Trollbasket</h3>
@@ -28,10 +23,10 @@ const HomePage = () => {
 		 			</div>
 		 		</div>
 		 		<div className="homepage-nav-item">
-		 			<div className="group-icon">
-		 				<i className="fa fa-shopping-cart bg-grey-100 border-rounded-full p-4"></i>
+		 			<Link to='/cart' className="link group-icon">
+		 				<i className="fa fa-shopping-cart text-black bg-grey-100 border-rounded-full p-4"></i>
 		 				<span className="border-rounded-full bg-orange-500 p-2 font-semibold text-white font-small">9</span>
-		 			</div>
+		 			</Link>
 		 			<div className="font-semibold">
 		 				My Orders
 		 			</div>
@@ -89,42 +84,18 @@ const HomePage = () => {
 
 		 	</div>
 		 	<div className="homepage-items-container">
-		 		<Link className="item-tab" to='/item'>
-		 			<img alt='' src={image} />
-		 			<span className='text-grey font-semibold'>{name}</span>
-		 			<div className='font-bold'>{price}</div>
-		 			<div className='text-grey font-semibold'>{`MOQ ${stock}(pieces)`}</div>
-		 		</Link>
-		 		<Link className="item-tab" to='/item'>
-		 			<img alt='' src={image} />
-		 			<div className='text-grey font-semibold'>{name}</div>
-		 			<div className='font-bold'>{price}</div>
-		 			<div className='text-grey font-semibold'>{`MOQ ${stock}(pieces)`}</div>
-		 		</Link>
-		 		<Link className="item-tab" to='/item'>
-		 			<img alt='' src={image} />
-		 			<div className='text-grey font-semibold'>{name}</div>
-		 			<div className='font-bold'>{price}</div>
-		 			<div className='text-grey font-semibold'>{`MOQ ${stock}(pieces)`}</div>
-		 		</Link>
-		 		<Link className="item-tab" to='/item'>
-		 			<img alt='' src={image} />
-		 			<span className='text-grey font-semibold'>{name}</span>
-		 			<div className='font-bold'>{price}</div>
-		 			<div className='text-grey font-semibold'>{`MOQ ${stock}(pieces)`}</div>
-		 		</Link>
-		 		<Link className="item-tab" to='/item'>
-		 			<img alt='' src={image} />
-		 			<div className='text-grey font-semibold'>{name}</div>
-		 			<div className='font-bold'>{price}</div>
-		 			<div className='text-grey font-semibold'>{`MOQ ${stock}(pieces)`}</div>
-		 		</Link>
-		 		<Link className="item-tab" to='/item'>
-		 			<img alt='' src={image} />
-		 			<div className='text-grey font-semibold'>{name}</div>
-		 			<div className='font-bold'>{price}</div>
-		 			<div className='text-grey font-semibold'>{`MOQ ${stock}(pieces)`}</div>
-		 		</Link>
+		 		{
+		 			products.map(({id, image, name, price, stock}) => 
+			 			<ItemTab
+			 				key={id} 
+			 				image={image}
+			 				name={name}
+			 				stock={stock}
+			 				id={id}
+			 				price={price}
+			 			/>
+			 		)
+		 		}
 		 	</div>
 
 		 	<nav className="homepage-primary-nav">
@@ -132,7 +103,7 @@ const HomePage = () => {
 		 			<i className="fas fa-home"></i>
 		 			<div className="font-semibold">Home</div>
 		 		</Link>
-		 		<Link className="homepage-primary-nav-item text-grey" to='/'>
+		 		<Link className="homepage-primary-nav-item text-grey" to='/cart'>
 		 			<i className="fa fa-shopping-cart"></i>
 		 			<div className="font-semibold">Buy</div>
 		 		</Link>

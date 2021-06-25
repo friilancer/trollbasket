@@ -11,16 +11,24 @@ body{
 	right: 5px;
 }
 
+.pointer{
+	cursor: pointer;
+}
+
 .link{
 	text-decoration: none;
+}
+
+.text-black{
+	color: #000;
 }
 
 .text-blue-400{
 	color: rgb(34, 125, 255);
 }
 
-.bg-blue-400{
-	background-color: rgb(34, 125, 255);
+.text-red-200{
+	color: 	rgb(228, 87, 84);
 }
 
 .font-semibold{
@@ -33,6 +41,10 @@ body{
 
 .text-grey{
 	color: rgba(0, 0, 0, 0.7);
+}
+
+.bg-white{
+	background-color: #fff;
 }
 
 .bg-grey-50{
