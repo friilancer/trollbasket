@@ -2,9 +2,11 @@ import './homepage.css';
 import {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import products from '../../data/mockData';
-import ItemTab from '../item/itemtab'
+import ItemTab from '../item/itemtab';
+import { useSelector } from 'react-redux';
 
 const HomePage = () => {
+	const cart = useSelector(state => state.cart.items);
 	return(
 		<>
 		 	<h3 className="homepage-h3">Trollbasket</h3>
@@ -17,7 +19,7 @@ const HomePage = () => {
 		 			<i className="fa fa-chevron-down"></i>
 		 		</div>
 		 		<div className="homepage-nav-item homepage-nav-item-border">
-		 			<i className="fas fa-map-marker-alt bg-grey-100 border-rounded-full p-rect-y-circular"></i>
+		 			<i className="fas fa-calendar-day bg-grey-100 text-purple-400 border-rounded-full p-rect-y-circular"></i>
 		 			<div className="font-semibold">
 		 				My Orders
 		 			</div>
@@ -25,10 +27,10 @@ const HomePage = () => {
 		 		<div className="homepage-nav-item">
 		 			<Link to='/cart' className="link group-icon">
 		 				<i className="fa fa-shopping-cart text-black bg-grey-100 border-rounded-full p-4"></i>
-		 				<span className="border-rounded-full bg-orange-500 p-2 font-semibold text-white font-small">9</span>
+		 				<span className="border-rounded-full bg-orange-500 p-2 font-semibold text-white font-small">{cart.length}</span>
 		 			</Link>
 		 			<div className="font-semibold">
-		 				My Orders
+		 				Cart
 		 			</div>
 		 		</div>
 		 	</nav>

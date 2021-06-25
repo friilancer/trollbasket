@@ -16,7 +16,7 @@ const products = [{
 },
 { 
 	id: 'a2',
-	name: 'Vintage Coca Cola', 
+	name: 'Coca Cola', 
 	description: 'Soft Drink', 
 	image: two, 
 	price: 2000, 
@@ -34,7 +34,7 @@ const products = [{
 },
 { 
 	id: 'a4',
-	name: 'Meal', 
+	name: 'Lorem Ipsium', 
 	description: 'Some Dummy Text', 
 	image: four, 
 	price: 5000, 
@@ -43,7 +43,7 @@ const products = [{
 },
 { 
 	id: 'a5',
-	name: 'Pack', 
+	name: 'Lorem Ipsium', 
 	description: 'Get comfy and comfortable', 
 	image: five, 
 	price: 9000, 
@@ -52,8 +52,8 @@ const products = [{
 },
 { 
 	id: 'a6',
-	name: 'NIKE Huararche 2019', 
-	description: 'Get comfy and comfortable with the new 2019 designer sneaker for all your events', 
+	name: 'NIKE 2019', 
+	description: 'Get comfy and comfortable ', 
 	image: six, 
 	price: 90000, 
 	location: 'Lagos', 

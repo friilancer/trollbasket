@@ -108,7 +108,9 @@
 
 .item-tab img{
 	width: 100%;
+	min-height: 120px;
 }
+
 
 .homepage-primary-nav{
 	display: flex;

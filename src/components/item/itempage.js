@@ -4,7 +4,7 @@ import products from '../../data/mockData';
 import user from '../../img/7.png'
 import {Link, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '../../redux/actions/cartActions';
+import { addItem, incrementItem } from '../../redux/actions/cartActions';
 
 const ItemPage = () => {
 	const {id} = useParams()
@@ -22,13 +22,19 @@ const ItemPage = () => {
 	},[])
 
 	const handleAdd = () => {
-		dispatch(addItem({
-			id,
-			image:product.image,
-			name:product.name,
-			price:product.price,
-			quantity: 1
-		}))
+		let check = cart.filter(item => item.id === id)
+		console.log(check)
+		if(check.length > 0){
+			dispatch(incrementItem(id))
+		}else {
+			dispatch(addItem({
+				id,
+				image:product.image,
+				name:product.name,
+				price:product.price,
+				quantity: 1
+			}))
+		}
 	}
 	return(
 		<>
@@ -39,7 +45,7 @@ const ItemPage = () => {
 					<i className="fas fa-search bg-grey-100 border-rounded-full p-4"></i>
 					<Link to='/cart' className="link group-icon">
 			 			<i className="fa fa-shopping-cart text-black bg-grey-100 border-rounded-full p-4"></i>
-			 			<span className="border-rounded-full bg-orange-500 p-2 font-semibold text-white font-small">9</span>
+			 			<span className="border-rounded-full bg-orange-500 p-2 font-semibold text-white font-small">{cart.length}</span>
 			 		</Link>
 				</div>
 			</nav>

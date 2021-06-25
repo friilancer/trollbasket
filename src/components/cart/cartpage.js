@@ -3,7 +3,7 @@ import products from '../../data/mockData';
 import {Link} from 'react-router-dom'
 import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteItem } from '../../redux/actions/cartActions';
+import { deleteItem, addItem, decrementItem, incrementItem } from '../../redux/actions/cartActions';
 import ItemTab from '../item/itemtab'
 
 const CartPage = () => {
@@ -22,6 +22,15 @@ const CartPage = () => {
 	const handleDelete = (id) => {
 		dispatch(deleteItem(id))
 	}
+
+	const handleIncrement = (id) => {
+		dispatch(incrementItem(id))
+	}
+
+	const handleDecrement = (id) => {
+		dispatch(decrementItem(id))
+	}
+
 
 	return(
 		<>
@@ -48,9 +57,9 @@ const CartPage = () => {
 										<div className="font-semibold text-grey font-medium">Delete</div>	
 									</div>
 									<div className="cartItem-controls-quantity">
-										<button className="fas fa-minus border-rounded-full p-rect-y-circular text-blue-400 bg-white"></button>
+										<button className="fas fa-minus border-rounded-full p-rect-y-circular text-blue-400 bg-white pointer" onClick={() =>handleDecrement(id)}></button>
 										<div className="font-semibold text-grey font-medium">{quantity}</div>
-										<button className="fas fa-plus border-rounded-full p-rect-y-circular text-blue-400 bg-white"></button>
+										<button className="fas fa-plus border-rounded-full p-rect-y-circular text-blue-400 bg-white pointer" onClick={() => handleIncrement(id)} ></button>
 									</div>
 								</div>
 							</div>
