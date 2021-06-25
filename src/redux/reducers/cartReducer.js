@@ -6,7 +6,7 @@ const initialState = JSON.parse(sessionStorage.getItem('cart')) || {
 }
 
 
-export default (state = initialState, action) => {
+const reducerFunction = (state = initialState, action) => {
 	switch(action.type){
 		case GET_ITEMS:{
 			return {
@@ -62,3 +62,5 @@ export default (state = initialState, action) => {
 			return state
 	}
 }
+
+export default reducerFunction
