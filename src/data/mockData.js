@@ -52,10 +52,10 @@ const products = [{
 },
 { 
 	id: 'a6',
-	name: 'NIKE 2019', 
-	description: 'Get comfy and comfortable ', 
+	name: 'Lorem Ipsium', 
+	description: 'No Sugar Drink', 
 	image: six, 
-	price: 90000, 
+	price: 3000, 
 	location: 'Lagos', 
 	stock: 25, 
 }]
