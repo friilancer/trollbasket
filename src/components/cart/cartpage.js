@@ -1,23 +1,19 @@
 import './cartpage.css';
 import products from '../../data/mockData';
-import {Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteItem, addItem, decrementItem, incrementItem } from '../../redux/actions/cartActions';
+import { deleteItem, decrementItem, incrementItem } from '../../redux/actions/cartActions';
 import ItemTab from '../item/itemtab'
 
 const CartPage = () => {
-	const {
-		id,
-		image,
-		name,
-		price,
-		stock,
-		description
-	} = products[5]
+	const [recentlyViewed, setRecentlyViewed] = useState([])
 
 	const cart = useSelector(state => state.cart.items);
+	const views = useSelector(state => state.views)
 	const dispatch = useDispatch();
+	const history = useHistory()
+	const [totalPrice, setTotalPrice] = useState(0)
 
 	const handleDelete = (id) => {
 		dispatch(deleteItem(id))
@@ -31,11 +27,30 @@ const CartPage = () => {
 		dispatch(decrementItem(id))
 	}
 
+	useEffect(() => {
+		const getTotalPrice = (cart) => {
+			let total = 0
+			for(let item of cart){
+				total += item.price * item.quantity
+			}
+			setTotalPrice(total)
+		}
+
+		getTotalPrice(cart)
+	}, [cart])
+
+	useEffect(() => {
+		const getRecentlyViewedProducts = () => {
+			let items = products.filter(({id}) => views.includes(id))
+			setRecentlyViewed(items)
+		}
+		getRecentlyViewedProducts()
+	}, [views])
 
 	return(
 		<>
 			<nav className="cartpage-nav">
-				<i className="fas fa-chevron-left bg-grey-100 p-4"></i>
+				<i onClick={history.goBack} className="fas fa-chevron-left pointer bg-grey-100 p-4"></i>
 				<h3 className="cartpage-nav-header font-bold text-grey">Cart</h3>
 				<i></i>
 			</nav>
@@ -74,7 +89,7 @@ const CartPage = () => {
 							Subtotal
 						</div>
 						<div className="text-grey font-semibold">
-							N18,999
+							{totalPrice}
 						</div>
 					</div>
 					<div className="cartpage-totalDisplay">
@@ -82,7 +97,7 @@ const CartPage = () => {
 							Total
 						</div>
 						<div className="font-bold">
-							N18,999
+							{totalPrice}
 						</div>
 					</div>
 					<button className="cartpage-checkout-button border-rounded bg-blue-400 text-white font-semibold">Checkout</button>
@@ -94,27 +109,17 @@ const CartPage = () => {
 						<div className="text-blue-400 font-semibold">View All</div>
 					</div>
 					<div className="homepage-items-container">
-			 			<ItemTab 
-			 				image={image}
-			 				name={name}
-			 				stock={stock}
-			 				id={id}
-			 				price={price}
-			 			/>
-			 			<ItemTab 
-			 				image={image}
-			 				name={name}
-			 				stock={stock}
-			 				id={id}
-			 				price={price}
-			 			/>
-			 			<ItemTab 
-			 				image={image}
-			 				name={name}
-			 				stock={stock}
-			 				id={id}
-			 				price={price}
-			 			/>
+			 			{
+						 	recentlyViewed.map(({id, image, name, price, stock}) => 
+								<ItemTab 
+									key={id} 
+									image={image}
+									name={name}
+									id={id}
+									price={price}
+								/>
+							)
+						}
 			 		</div>
 				</div>
 			</section>

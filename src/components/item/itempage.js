@@ -2,13 +2,15 @@ import {Fragment, useState, useEffect} from 'react';
 import './itempage.css';
 import products from '../../data/mockData';
 import user from '../../img/7.png'
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams, useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, incrementItem } from '../../redux/actions/cartActions';
+import { addView } from '../../redux/actions/viewActions';
 
 const ItemPage = () => {
 	const {id} = useParams()
 	const [product, setProduct] = useState({});
+	const history = useHistory()
 
 	const cart = useSelector(state => state.cart.items);
 	const dispatch = useDispatch();
@@ -21,9 +23,12 @@ const ItemPage = () => {
 		getProduct()
 	},[])
 
+	useEffect(() => {
+		dispatch(addView(id))
+	}, [])
+
 	const handleAdd = () => {
 		let check = cart.filter(item => item.id === id)
-		console.log(check)
 		if(check.length > 0){
 			dispatch(incrementItem(id))
 		}else {
@@ -35,11 +40,13 @@ const ItemPage = () => {
 				quantity: 1
 			}))
 		}
+		history.push('/cart')
 	}
+
 	return(
 		<>
 			<nav className="itempage-nav">
-				<i className="fas fa-chevron-left bg-grey-100 p-4"></i>
+				<i onClick={history.goBack} className="fas fa-chevron-left bg-grey-100 p-4 pointer"></i>
 				<h3 className="itempage-nav-header font-bold text-grey">Details</h3>
 				<div className="itempage-nav-tail">
 					<i className="fas fa-search bg-grey-100 border-rounded-full p-4"></i>

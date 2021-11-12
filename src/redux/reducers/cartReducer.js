@@ -1,7 +1,7 @@
 
 import {GET_ITEMS, ADD_ITEM, DELETE_ITEM, INCREMENT_ITEM, DECREMENT_ITEM} from '../actions/types'
 
-const initialState = JSON.parse(sessionStorage.getItem('cart')) || {
+const initialState = JSON.parse(localStorage.getItem('cart')) || {
 	items:[]
 }
 
@@ -18,7 +18,7 @@ const reducerFunction = (state = initialState, action) => {
 				...state,
 				items:state.items.filter(item => item.id !== action.payload)
 			}
-			sessionStorage.setItem('cart', JSON.stringify(newState))
+			localStorage.setItem('cart', JSON.stringify(newState))
 			return newState
 		}
 		case DECREMENT_ITEM:{
@@ -31,7 +31,7 @@ const reducerFunction = (state = initialState, action) => {
 					return item
 				})
 			}
-			sessionStorage.setItem('cart', JSON.stringify(newState))
+			localStorage.setItem('cart', JSON.stringify(newState))
 			return newState
 		}
 		case INCREMENT_ITEM:{
@@ -44,7 +44,7 @@ const reducerFunction = (state = initialState, action) => {
 					return item
 				})
 			}
-			sessionStorage.setItem('cart', JSON.stringify(newState))
+			localStorage.setItem('cart', JSON.stringify(newState))
 			return newState
 		}
 		case ADD_ITEM:{
@@ -55,7 +55,7 @@ const reducerFunction = (state = initialState, action) => {
 						action.payload
 					]
 				} 
-			sessionStorage.setItem('cart', JSON.stringify(newState))
+			localStorage.setItem('cart', JSON.stringify(newState))
 			return newState
 		}
 		default:
