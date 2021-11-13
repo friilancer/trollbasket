@@ -1,4 +1,4 @@
-import {GET_ITEMS, ADD_ITEM, DELETE_ITEM, INCREMENT_ITEM, DECREMENT_ITEM} from './types'
+import {GET_ITEMS, ADD_ITEM, DELETE_ITEM, INCREMENT_ITEM, DECREMENT_ITEM, CLEAR_ITEMS} from './types'
 
 
 export const getItems = () => {
@@ -6,6 +6,13 @@ export const getItems = () => {
 		type: GET_ITEMS
 	}
 }
+
+export const clearItems = () => {
+	return {
+		type: CLEAR_ITEMS
+	}
+}
+
 
 export const deleteItem = (id) => {
 	return {

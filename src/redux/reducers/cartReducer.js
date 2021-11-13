@@ -1,16 +1,21 @@
 
-import {GET_ITEMS, ADD_ITEM, DELETE_ITEM, INCREMENT_ITEM, DECREMENT_ITEM} from '../actions/types'
+import {GET_ITEMS, ADD_ITEM, DELETE_ITEM, INCREMENT_ITEM, DECREMENT_ITEM, CLEAR_ITEMS} from '../actions/types'
 
 const initialState = JSON.parse(localStorage.getItem('cart')) || {
 	items:[]
 }
-
 
 const reducerFunction = (state = initialState, action) => {
 	switch(action.type){
 		case GET_ITEMS:{
 			return {
 				...state
+			}
+		}
+		case CLEAR_ITEMS:{
+			return {
+				...state,
+				items:[]
 			}
 		}
 		case DELETE_ITEM:{

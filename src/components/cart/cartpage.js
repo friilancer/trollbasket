@@ -3,13 +3,53 @@ import products from '../../data/mockData';
 import {useHistory} from 'react-router-dom'
 import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteItem, decrementItem, incrementItem } from '../../redux/actions/cartActions';
+import { PaystackButton } from 'react-paystack';
+import { deleteItem, decrementItem, incrementItem, clearItems } from '../../redux/actions/cartActions';
 import ItemTab from '../item/itemtab'
+
+const PaywithPaystack = ({totalPrice, submitPayment}) => {	
+	let user = {
+		name: "John Doe",
+		email: "john@xyz.com"
+	}
+
+	let config = {
+		email: user.email,
+		amount: totalPrice*100,
+		metadata:user,
+		publicKey: "pk_test_f6bfd988dcd72193ceddeb2ae4f6aaf500d269bc"
+	}
+	
+	const onPaymentSuccess = (reference) => {
+		let {trxref, transaction} = reference;
+		submitPayment({trxref, transaction, totalPrice})
+	}
+
+	const onPaymentClose = () => {
+		return ;
+	}
+	
+	let componentProps = {
+		...config,
+		text: 'Checkout',
+		onSuccess: (reference) => onPaymentSuccess(reference),
+		onClose: onPaymentClose
+	}
+
+	return (
+		<div className="flex space-around">
+			<PaystackButton
+				className="cartpage-checkout-button border-rounded bg-blue-400 text-white font-semibold" 
+				{...componentProps}
+			/> 
+		</div>
+	)
+}
 
 const CartPage = () => {
 	const [recentlyViewed, setRecentlyViewed] = useState([])
 
-	const cart = useSelector(state => state.cart.items);
+	const items = useSelector(state => state.cart.items);
 	const views = useSelector(state => state.views)
 	const dispatch = useDispatch();
 	const history = useHistory()
@@ -27,6 +67,11 @@ const CartPage = () => {
 		dispatch(decrementItem(id))
 	}
 
+	const submitPayment = () => {
+		history.push("/")
+		dispatch(clearItems())
+	}
+
 	useEffect(() => {
 		const getTotalPrice = (cart) => {
 			let total = 0
@@ -36,8 +81,8 @@ const CartPage = () => {
 			setTotalPrice(total)
 		}
 
-		getTotalPrice(cart)
-	}, [cart])
+		getTotalPrice(items)
+	}, [items])
 
 	useEffect(() => {
 		const getRecentlyViewedProducts = () => {
@@ -56,14 +101,14 @@ const CartPage = () => {
 			</nav>
 			<section>
 				<div className="bg-grey-50 cartpage-items-container">
-					{
-						cart.map(({id, quantity, name, image, price}) => 
+					{ 
+						items.map(({id, quantity, name, image, price}) => 
 							<div key={id} className="cartpage-cartItem bg-white p-4">
 								<div className="cartpage-cartItem-header">
 									<img alt='' src={image} />
 									<p className="font-semibold">
 										{name} <br />
-										<strong>{price}</strong>
+										<strong>{Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(Math.floor(price))}</strong>
 									</p>
 								</div>
 								<div className="cartpage-cartItem-controls">
@@ -89,7 +134,7 @@ const CartPage = () => {
 							Subtotal
 						</div>
 						<div className="text-grey font-semibold">
-							{totalPrice}
+							{Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(Math.floor(totalPrice))}
 						</div>
 					</div>
 					<div className="cartpage-totalDisplay">
@@ -97,10 +142,10 @@ const CartPage = () => {
 							Total
 						</div>
 						<div className="font-bold">
-							{totalPrice}
+							{Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(Math.floor(totalPrice))}
 						</div>
 					</div>
-					<button className="cartpage-checkout-button border-rounded bg-blue-400 text-white font-semibold">Checkout</button>
+					<PaywithPaystack submitPayment={submitPayment} totalPrice={totalPrice}/>
 				</div>
 
 				<div className="cartpage-view-container">

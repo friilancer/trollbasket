@@ -107,6 +107,13 @@ body{
 	font-size: 14px;
 }
 
+.flex{
+	display: flex;
+}
+
+.space-around{
+	align-items: space-around;
+}
 .text-white{
 	color: #fff;
 }
