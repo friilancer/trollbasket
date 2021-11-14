@@ -5,7 +5,7 @@ body{
 }
 
 .group-icon span{
-	padding: 2px 5px;
+	padding: 2px 7px;
 	position: relative;
 	bottom: 9px;
 	right: 5px;
@@ -23,12 +23,12 @@ body{
 	color: #000;
 }
 
-.text-blue-400{
-	color: rgb(34, 125, 255);
-}
-
 .text-red-200{
 	color: 	rgb(228, 87, 84);
+}
+
+.text-green-900{
+	color: rgb(3, 63, 34);
 }
 
 .font-semibold{
@@ -59,8 +59,32 @@ body{
 	background: rgb(237, 111, 56)
 }
 
+.w-10p{
+	width: 100px;
+}
+.text-orange-300{
+	color: rgb(231, 157, 125)
+}
+
+.text-orange-500{
+	color: rgb(237, 111, 56)
+}
+
+.text-blue-400{
+	color: rgb(38, 123, 253);
+}
+
+.text-blue-900{
+	color: rgb(1, 45, 110);
+}
+
+
 .bg-blue-400{
 	background: rgb(38, 123, 253);
+}
+
+.bg-blue-900{
+	background: rgb(1, 47, 116);
 }
 
 .bg-purple-400{
@@ -69,6 +93,18 @@ body{
 
 .text-purple-400{
 	color: rgb(124, 66, 240);
+}
+
+.bg-green-200{
+	background: rgb(8, 219, 117);
+}
+
+.text-green-200{
+	color: rgb(8, 219, 117);
+}
+
+.text-green-400{
+	color: rgb(7, 145, 78);
 }
 
 .bg-green-400{
@@ -87,12 +123,30 @@ body{
 	padding: 4px 6px;
 }
 
+.m-5{
+	margin: 5px;
+}
+
 .p-2{
 	padding: 2px;
 }
 
 .p-4{
 	padding: 5px;
+}
+
+.py-10{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.px-15{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.border-0{
+	border: none;
 }
 
 .p-rect-x-circular{
@@ -107,13 +161,46 @@ body{
 	font-size: 14px;
 }
 
+.font-lg {
+	font-size: 18px;
+}
+
+.font-xl {
+	font-size: 21px;
+}
+
 .flex{
 	display: flex;
 }
 
-.space-around{
-	align-items: space-around;
+.space-between{
+	justify-content: space-between;
 }
+
+.space-around{
+	justify-content: space-around;
+}
+
+.align-center{
+	align-items: center;
+}
+
 .text-white{
 	color: #fff;
+}
+
+.hidden{
+	display: none;
+}
+
+.w-full{
+	width: 100vw;
+}
+
+.w-90{
+	width: 90vw;
+}
+
+.w-95{
+	width: 95vw;
 }

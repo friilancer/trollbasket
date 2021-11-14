@@ -12,7 +12,7 @@ const HomePage = () => {
 		 	<h3 className="homepage-h3">Trollbasket</h3>
 		 	<nav className="homepage-nav">
 		 		<div className="homepage-nav-item homepage-nav-item-border">
-		 			<i className="fas fa-map-marker-alt bg-grey-100 border-rounded-full p-rect-y-circular"></i>
+		 			<i className="fas fa-map-marker-alt text-blue-400 bg-grey-100 border-rounded-full p-rect-y-circular"></i>
 		 			<div className="font-semibold">
 		 				Lagos
 		 			</div>
@@ -24,10 +24,10 @@ const HomePage = () => {
 		 				My Orders
 		 			</div>
 		 		</div>
-		 		<div className="homepage-nav-item">
+		 		<div className="homepage-nav-item cart-nav-group">
 		 			<Link to='/cart' className="link group-icon">
 		 				<i className="fa fa-shopping-cart text-black bg-grey-100 border-rounded-full p-4"></i>
-		 				<span className="border-rounded-full bg-orange-500 p-2 font-semibold text-white font-small">{cart.length}</span>
+		 				<span className="border-rounded-full bg-orange-500 font-semibold text-white font-small">{cart.length}</span>
 		 			</Link>
 		 			<div className="font-semibold">
 		 				Cart
@@ -43,7 +43,32 @@ const HomePage = () => {
 		 		<i className="fas fa-search"></i>
 		 	</div>
 
-		 	<div className="homepage-carousel bg-grey-100">
+		 	<div className="homepage-carousel">
+				 	<div className="bg-green-200 homepage-carousel-item border-rounded align-center">
+						 <p className="text-white font-bold">
+							 Having any <span className="text-orange-500">issues</span> with your order?
+						 </p>
+						 <button className="text-white font-medium bg-blue-400 border-0 border-rounded px-15 py-10">
+							 Contact Us
+						 </button>
+					</div>	
+					<div className="bg-orange-500 homepage-carousel-item border-rounded align-center">
+						 <p className="text-white font-bold">
+							 Having any <span className="text-blue-400">issues</span> with your order?
+						 </p>
+						 <button className="text-white font-medium bg-green-400 border-0 border-rounded px-15 py-10">
+							 Contact Us
+						 </button>
+					</div>	
+					<div className="bg-blue-400 homepage-carousel-item border-rounded align-center">
+						 <p className="text-white font-bold">
+							 Having any <span className="text-green-200">issues</span> with your order?
+						 </p>
+						 <button className="text-white font-medium bg-orange-500 border-0 border-rounded px-15 py-10">
+							 Contact Us
+						 </button>
+					</div>	
+						
 		 	</div>
 
 		 	<div className="homepage-sec-nav">

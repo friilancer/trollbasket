@@ -1,4 +1,4 @@
-import {Fragment, useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import './itempage.css';
 import products from '../../data/mockData';
 import user from '../../img/7.png'
@@ -11,6 +11,7 @@ const ItemPage = () => {
 	const {id} = useParams()
 	const [product, setProduct] = useState({});
 	const history = useHistory()
+	const [successMessage, setSuccessMessage] = useState("")
 
 	const cart = useSelector(state => state.cart.items);
 	const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const ItemPage = () => {
 				quantity: 1
 			}))
 		}
-		history.push('/cart')
+		setSuccessMessage(`${product.name} successfully added to your cart`)
 	}
 
 	return(
@@ -56,6 +57,15 @@ const ItemPage = () => {
 			 		</Link>
 				</div>
 			</nav>
+			{
+				typeof successMessage === 'string' && successMessage !== "" &&
+				<div className="flex align-center width-full space-between bg-green-200 text-green-700 p-4">
+					<span className="font-bold font-medium">
+						{successMessage}
+					</span>
+					<i onClick={() => setSuccessMessage("")} className="fa fa-times pointer font-medium"></i>
+				</div>
+			}
 			<div className='itempage-jumbotron bg-grey-50'>
 				<img alt='shoe' src={product.image} />
 			</div>

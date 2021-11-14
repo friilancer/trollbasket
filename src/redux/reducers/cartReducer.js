@@ -31,7 +31,7 @@ const reducerFunction = (state = initialState, action) => {
 				...state,
 				items:state.items.filter(item => {
 					if(item.id === action.payload){
-						return item.quantity--
+						return --item.quantity
 					}
 					return item
 				})

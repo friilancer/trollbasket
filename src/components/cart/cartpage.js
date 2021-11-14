@@ -49,7 +49,7 @@ const PaywithPaystack = ({totalPrice, submitPayment}) => {
 const CartPage = () => {
 	const [recentlyViewed, setRecentlyViewed] = useState([])
 
-	const items = useSelector(state => state.cart.items);
+	const cart = useSelector(state => state.cart.items);
 	const views = useSelector(state => state.views)
 	const dispatch = useDispatch();
 	const history = useHistory()
@@ -81,8 +81,8 @@ const CartPage = () => {
 			setTotalPrice(total)
 		}
 
-		getTotalPrice(items)
-	}, [items])
+		getTotalPrice(cart)
+	}, [cart])
 
 	useEffect(() => {
 		const getRecentlyViewedProducts = () => {
@@ -97,12 +97,12 @@ const CartPage = () => {
 			<nav className="cartpage-nav">
 				<i onClick={history.goBack} className="fas fa-chevron-left pointer bg-grey-100 p-4"></i>
 				<h3 className="cartpage-nav-header font-bold text-grey">Cart</h3>
-				<i></i>
+				<i onClick={() => history.push('/')} className="fa fa-home pointer font-lg "></i>
 			</nav>
 			<section>
 				<div className="bg-grey-50 cartpage-items-container">
 					{ 
-						items.map(({id, quantity, name, image, price}) => 
+						cart.map(({id, quantity, name, image, price}) => 
 							<div key={id} className="cartpage-cartItem bg-white p-4">
 								<div className="cartpage-cartItem-header">
 									<img alt='' src={image} />
