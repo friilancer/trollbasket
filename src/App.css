@@ -4,6 +4,10 @@ body{
 	margin: 0 auto;
 }
 
+.text-center{
+	text-align: center;
+}
+
 .group-icon span{
 	padding: 2px 7px;
 	position: relative;

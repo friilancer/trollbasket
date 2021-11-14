@@ -101,6 +101,10 @@ const CartPage = () => {
 			</nav>
 			<section>
 				<div className="bg-grey-50 cartpage-items-container">
+					{
+						cart.length === 0 && 
+						<p className="text-grey text-center font-bold"> Sorry, no items in cart to display yet </p>
+					}
 					{ 
 						cart.map(({id, quantity, name, image, price}) => 
 							<div key={id} className="cartpage-cartItem bg-white p-4">
