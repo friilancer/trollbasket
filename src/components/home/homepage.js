@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import products from '../../data/mockData';
 import ItemTab from '../item/itemtab';
 import { useSelector } from 'react-redux';
+import SlideShow from './slideshow';
 
 const HomePage = () => {
 	const cart = useSelector(state => state.cart.items);
@@ -43,7 +44,8 @@ const HomePage = () => {
 		 		<i className="fas fa-search"></i>
 		 	</div>
 
-		 	<div className="homepage-carousel">
+			<SlideShow />
+		 	<div className="homepage-carousel-sm">
 				 	<div className="bg-green-200 homepage-carousel-item border-rounded align-center">
 						 <p className="text-white font-bold">
 							 Having any <span className="text-orange-500">issues</span> with your order?
@@ -67,8 +69,7 @@ const HomePage = () => {
 						 <button className="text-white font-medium bg-orange-500 border-0 border-rounded px-15 py-10">
 							 Contact Us
 						 </button>
-					</div>	
-						
+					</div>			
 		 	</div>
 
 		 	<div className="homepage-sec-nav">
@@ -131,8 +132,8 @@ const HomePage = () => {
 		 			<div className="font-semibold">Home</div>
 		 		</Link>
 		 		<Link className="homepage-primary-nav-item text-grey" to='/cart'>
-		 			<i className="fa fa-shopping-cart"></i>
-		 			<div className="font-semibold">Buy</div>
+		 			<i className="fa fa-shopping-cart text-blue-400"></i>
+		 			<div className="font-semibold text-blue-400">Buy</div>
 		 		</Link>
 		 		<Link className="homepage-primary-nav-item text-grey" to='/'>
 		 			<i className="fas fa-tag"></i>

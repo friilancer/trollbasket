@@ -62,11 +62,13 @@
 	right: 25px;
 	color: grey;
 }
-
-.homepage-carousel{
-	white-space: nowrap;
-	width: 100%;
+.homepage-carousel .homepage-carousel-sm{
 	max-width: 800px;
+}
+
+.homepage-carousel-sm{
+	white-space: nowrap;
+	width: 100%;	
 	margin-bottom: 20px;
 	overflow-x: auto;
 	scrollbar-width: thin;
@@ -82,6 +84,9 @@
 	gap: 5px;
 	padding: 8px;
 	height: 130px;
+}
+
+.homepage-carousel-sm .homepage-carousel-item {
 	margin-right: 8px;
 }
 
@@ -181,6 +186,14 @@
 	.homepage-nav{
 		margin-bottom: 30px;
 	}
+	.homepage-carousel-sm{
+		white-space: nowrap;
+		width: 100%;
+		max-width: 800px;
+		margin-bottom: 20px;
+		display: none;
+	}
+
 	.homepage-sec-nav{
 		justify-content: center;
 		column-gap: 5%;

@@ -1,0 +1,14 @@
+.homepage-carousel{
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    .homepage-carousel{
+        display: grid;
+        justify-items: center;
+    }
+
+    .homepage-carousel .homepage-carousel-item{
+        width: 80%;
+    }
+}
