@@ -10,7 +10,7 @@ const HomePage = () => {
 	const cart = useSelector(state => state.cart.items);
 	return(
 		<>
-		 	<h3 className="homepage-h3">Trollbasket</h3>
+		 	<h3 className="homepage-h3">MerchBuy</h3>
 		 	<nav className="homepage-nav">
 		 		<div className="homepage-nav-item homepage-nav-item-border">
 		 			<i className="fas fa-map-marker-alt text-blue-400 bg-grey-100 border-rounded-full p-rect-y-circular"></i>
